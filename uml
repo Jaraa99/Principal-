@@ -1,0 +1,146 @@
+public class Persona {
+    public class Pasiente extends Usurio implements Citable, Vacunable {
+        private float peso;
+        private float talla;
+
+
+        public Pasiente(int id, String nombre, String telefono, float peso, float talla) {
+            super(id, nombre, telefono);
+            this.peso = peso;
+            this.talla = talla;
+        }
+
+        public float getPeso() {
+            return peso;
+        }
+
+        public void setPeso(float peso) {
+            this.peso = peso;
+        }
+
+        public float getTalla() {
+            return talla;
+        }
+
+        public void setTalla(float talla) {
+            this.talla = talla;
+        }
+
+        @Override
+        public void generarCita() {
+            System.out.println("Cita no Realizada. Pasiente");
+        }
+
+        @Override
+        public void confirmarVacunado() {
+            System.out.println("No esta Vacunado");
+            
+            
+        }
+    }
+    public interface Citable {
+        public void generarCita();
+    }
+    public interface Vacunable{
+        public void confirmarVacunado();
+
+    }
+
+
+
+
+public class Doctor {
+    public Doctor(int i, String pedro_palacios, String s, String traumatologo) {
+        
+    }
+
+    public Doctor(String jose_condo, int i, String s, String cardiologo) {
+    }
+
+    public static void main(String[] args) {
+        Usurio usuario=new Usurio(1,"Vicente","09282726");
+        System.out.println(usuario.getNombre());
+
+        Doctor doctor=new Doctor("Jose Condo",2,"00038383","Cardiologo");
+        System.out.println(doctor.getEspecialidad());
+    }
+
+    boolean getEspecialidad() {
+
+        return false;
+    }
+}
+
+public class Usurio {
+    private int id;
+    private String nombre;
+    private String telefono;
+
+    public Usurio(int id, String nombre, String telefono) {
+        this.id = id;
+        this.nombre = nombre;
+        this.telefono = telefono;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+
+public class Enfermera {
+    public class Doctor extends Usuario implements Persona.Vacunable, Persona.Citable {
+        private String especialidad;
+
+        public Doctor(int id,String nombre,String telefono){
+            super(id, nombre, telefono);
+        }
+
+        public Doctor(int id, String nombre, String telefono, String especialidad) {
+            super(id, nombre, telefono);
+            this.especialidad = especialidad;
+        }
+
+        public String getEspecialidad() {
+            return especialidad;
+        }
+
+        public void setEspecialidad(String especialidad) {
+            this.especialidad = especialidad;
+        }
+
+        @Override
+        public void generarCita() {
+            System.out.println("Cita Realizada. Doctor");
+
+        }
+
+        @Override
+        public void confirmarVacunado() {
+            System.out.println("Si esta Vacunado");
+
+        }
+    }
+
+
+
+}
